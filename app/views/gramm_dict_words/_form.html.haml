@@ -1,0 +1,19 @@
+= form_for @gramm_dict_word do |f|
+  - if @gramm_dict_word.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gramm_dict_word.errors.count, "error")} prohibited this gramm_dict_word from being saved:"
+      %ul
+        - @gramm_dict_word.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :word
+    = f.text_area :word
+  .field
+    = f.label :chars
+    = f.text_area :chars
+  .field
+    = f.label :grammar_dictionary
+    = f.text_field :grammar_dictionary
+  .actions
+    = f.submit 'Save'

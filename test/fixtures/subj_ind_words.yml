@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyText
+  pages: MyText
+  subject_index: one
+
+two:
+  word: MyText
+  pages: MyText
+  subject_index: two

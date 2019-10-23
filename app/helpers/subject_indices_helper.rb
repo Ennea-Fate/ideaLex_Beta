@@ -1,0 +1,2 @@
+module SubjectIndicesHelper
+end

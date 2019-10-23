@@ -1,0 +1,25 @@
+%h1 Listing subj_ind_words
+
+%table
+  %thead
+    %tr
+      %th Word
+      %th Pages
+      %th Subject index
+      %th
+      %th
+      %th
+
+  %tbody
+    - @subj_ind_words.each do |subj_ind_word|
+      %tr
+        %td= subj_ind_word.word
+        %td= subj_ind_word.pages
+        %td= subj_ind_word.subject_index
+        %td= link_to 'Show', subj_ind_word
+        %td= link_to 'Edit', edit_subj_ind_word_path(subj_ind_word)
+        %td= link_to 'Destroy', subj_ind_word, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Subj ind word', new_subj_ind_word_path

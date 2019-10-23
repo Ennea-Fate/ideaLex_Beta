@@ -1,0 +1,19 @@
+= form_for @freq_voc_word do |f|
+  - if @freq_voc_word.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@freq_voc_word.errors.count, "error")} prohibited this freq_voc_word from being saved:"
+      %ul
+        - @freq_voc_word.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :word
+    = f.text_area :word
+  .field
+    = f.label :occurrence_rate
+    = f.number_field :occurrence_rate
+  .field
+    = f.label :frequency_vocabulary
+    = f.text_field :frequency_vocabulary
+  .actions
+    = f.submit 'Save'

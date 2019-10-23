@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Word:
+  = @subj_ind_word.word
+%p
+  %b Pages:
+  = @subj_ind_word.pages
+%p
+  %b Subject index:
+  = @subj_ind_word.subject_index
+
+= link_to 'Edit', edit_subj_ind_word_path(@subj_ind_word)
+\|
+= link_to 'Back', subj_ind_words_path

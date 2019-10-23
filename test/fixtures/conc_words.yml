@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyText
+  concordance: MyText
+  pages: MyText
+  concordance: one
+
+two:
+  word: MyText
+  concordance: MyText
+  pages: MyText
+  concordance: two

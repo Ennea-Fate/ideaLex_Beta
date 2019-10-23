@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Book:
+  = @frequency_vocabulary.book
+
+= link_to 'Edit', edit_frequency_vocabulary_path(@frequency_vocabulary)
+\|
+= link_to 'Back', frequency_vocabularies_path

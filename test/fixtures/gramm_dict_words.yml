@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyText
+  chars: MyText
+  grammar_dictionary: one
+
+two:
+  word: MyText
+  chars: MyText
+  grammar_dictionary: two

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyText
+  occurrence_rate: 1
+  frequency_vocabulary: one
+
+two:
+  word: MyText
+  occurrence_rate: 1
+  frequency_vocabulary: two

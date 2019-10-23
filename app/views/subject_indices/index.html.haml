@@ -1,0 +1,21 @@
+%h1 Listing subject_indices
+
+%table
+  %thead
+    %tr
+      %th Book
+      %th
+      %th
+      %th
+
+  %tbody
+    - @subject_indices.each do |subject_index|
+      %tr
+        %td= subject_index.book
+        %td= link_to 'Show', subject_index
+        %td= link_to 'Edit', edit_subject_index_path(subject_index)
+        %td= link_to 'Destroy', subject_index, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Subject index', new_subject_index_path

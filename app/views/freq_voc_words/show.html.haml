@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Word:
+  = @freq_voc_word.word
+%p
+  %b Occurrence rate:
+  = @freq_voc_word.occurrence_rate
+%p
+  %b Frequency vocabulary:
+  = @freq_voc_word.frequency_vocabulary
+
+= link_to 'Edit', edit_freq_voc_word_path(@freq_voc_word)
+\|
+= link_to 'Back', freq_voc_words_path

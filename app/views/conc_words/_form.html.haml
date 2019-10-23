@@ -1,0 +1,22 @@
+= form_for @conc_word do |f|
+  - if @conc_word.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@conc_word.errors.count, "error")} prohibited this conc_word from being saved:"
+      %ul
+        - @conc_word.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :word
+    = f.text_area :word
+  .field
+    = f.label :concordance
+    = f.text_area :concordance
+  .field
+    = f.label :pages
+    = f.text_area :pages
+  .field
+    = f.label :concordance
+    = f.text_field :concordance
+  .actions
+    = f.submit 'Save'

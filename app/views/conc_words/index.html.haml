@@ -1,0 +1,27 @@
+%h1 Listing conc_words
+
+%table
+  %thead
+    %tr
+      %th Word
+      %th Concordance
+      %th Pages
+      %th Concordance
+      %th
+      %th
+      %th
+
+  %tbody
+    - @conc_words.each do |conc_word|
+      %tr
+        %td= conc_word.word
+        %td= conc_word.concordance
+        %td= conc_word.pages
+        %td= conc_word.concordance
+        %td= link_to 'Show', conc_word
+        %td= link_to 'Edit', edit_conc_word_path(conc_word)
+        %td= link_to 'Destroy', conc_word, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Conc word', new_conc_word_path

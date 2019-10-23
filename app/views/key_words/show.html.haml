@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Word:
+  = @key_word.word
+%p
+  %b Description:
+  = @key_word.description
+%p
+  %b Book:
+  = @key_word.book
+
+= link_to 'Edit', edit_key_word_path(@key_word)
+\|
+= link_to 'Back', key_words_path

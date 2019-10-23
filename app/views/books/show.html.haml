@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @book.text
+%p
+  %b Name:
+  = @book.name
+%p
+  %b Publ date:
+  = @book.publ_date
+
+= link_to 'Edit', edit_book_path(@book)
+\|
+= link_to 'Back', books_path

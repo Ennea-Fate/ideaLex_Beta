@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Word:
+  = @conc_word.word
+%p
+  %b Concordance:
+  = @conc_word.concordance
+%p
+  %b Pages:
+  = @conc_word.pages
+%p
+  %b Concordance:
+  = @conc_word.concordance
+
+= link_to 'Edit', edit_conc_word_path(@conc_word)
+\|
+= link_to 'Back', conc_words_path

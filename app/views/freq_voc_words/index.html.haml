@@ -1,0 +1,25 @@
+%h1 Listing freq_voc_words
+
+%table
+  %thead
+    %tr
+      %th Word
+      %th Occurrence rate
+      %th Frequency vocabulary
+      %th
+      %th
+      %th
+
+  %tbody
+    - @freq_voc_words.each do |freq_voc_word|
+      %tr
+        %td= freq_voc_word.word
+        %td= freq_voc_word.occurrence_rate
+        %td= freq_voc_word.frequency_vocabulary
+        %td= link_to 'Show', freq_voc_word
+        %td= link_to 'Edit', edit_freq_voc_word_path(freq_voc_word)
+        %td= link_to 'Destroy', freq_voc_word, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Freq voc word', new_freq_voc_word_path

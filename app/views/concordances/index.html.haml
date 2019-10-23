@@ -1,0 +1,21 @@
+%h1 Listing concordances
+
+%table
+  %thead
+    %tr
+      %th Book
+      %th
+      %th
+      %th
+
+  %tbody
+    - @concordances.each do |concordance|
+      %tr
+        %td= concordance.book
+        %td= link_to 'Show', concordance
+        %td= link_to 'Edit', edit_concordance_path(concordance)
+        %td= link_to 'Destroy', concordance, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Concordance', new_concordance_path

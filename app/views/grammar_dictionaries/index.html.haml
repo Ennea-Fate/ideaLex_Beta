@@ -1,0 +1,21 @@
+%h1 Listing grammar_dictionaries
+
+%table
+  %thead
+    %tr
+      %th Book
+      %th
+      %th
+      %th
+
+  %tbody
+    - @grammar_dictionaries.each do |grammar_dictionary|
+      %tr
+        %td= grammar_dictionary.book
+        %td= link_to 'Show', grammar_dictionary
+        %td= link_to 'Edit', edit_grammar_dictionary_path(grammar_dictionary)
+        %td= link_to 'Destroy', grammar_dictionary, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Grammar dictionary', new_grammar_dictionary_path

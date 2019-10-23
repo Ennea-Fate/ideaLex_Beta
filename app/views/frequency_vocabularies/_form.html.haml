@@ -1,0 +1,13 @@
+= form_for @frequency_vocabulary do |f|
+  - if @frequency_vocabulary.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@frequency_vocabulary.errors.count, "error")} prohibited this frequency_vocabulary from being saved:"
+      %ul
+        - @frequency_vocabulary.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :book
+    = f.text_field :book
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,13 @@
+= form_for @subject_index do |f|
+  - if @subject_index.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@subject_index.errors.count, "error")} prohibited this subject_index from being saved:"
+      %ul
+        - @subject_index.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :book
+    = f.text_field :book
+  .actions
+    = f.submit 'Save'

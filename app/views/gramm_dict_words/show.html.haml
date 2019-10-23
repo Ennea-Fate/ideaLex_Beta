@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Word:
+  = @gramm_dict_word.word
+%p
+  %b Chars:
+  = @gramm_dict_word.chars
+%p
+  %b Grammar dictionary:
+  = @gramm_dict_word.grammar_dictionary
+
+= link_to 'Edit', edit_gramm_dict_word_path(@gramm_dict_word)
+\|
+= link_to 'Back', gramm_dict_words_path

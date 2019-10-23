@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Book:
+  = @grammar_dictionary.book
+
+= link_to 'Edit', edit_grammar_dictionary_path(@grammar_dictionary)
+\|
+= link_to 'Back', grammar_dictionaries_path

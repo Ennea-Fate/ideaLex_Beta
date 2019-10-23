@@ -1,0 +1,25 @@
+%h1 Listing gramm_dict_words
+
+%table
+  %thead
+    %tr
+      %th Word
+      %th Chars
+      %th Grammar dictionary
+      %th
+      %th
+      %th
+
+  %tbody
+    - @gramm_dict_words.each do |gramm_dict_word|
+      %tr
+        %td= gramm_dict_word.word
+        %td= gramm_dict_word.chars
+        %td= gramm_dict_word.grammar_dictionary
+        %td= link_to 'Show', gramm_dict_word
+        %td= link_to 'Edit', edit_gramm_dict_word_path(gramm_dict_word)
+        %td= link_to 'Destroy', gramm_dict_word, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Gramm dict word', new_gramm_dict_word_path

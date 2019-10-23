@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Book:
+  = @concordance.book
+
+= link_to 'Edit', edit_concordance_path(@concordance)
+\|
+= link_to 'Back', concordances_path

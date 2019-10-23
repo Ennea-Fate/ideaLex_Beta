@@ -1,0 +1,13 @@
+= form_for @concordance do |f|
+  - if @concordance.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@concordance.errors.count, "error")} prohibited this concordance from being saved:"
+      %ul
+        - @concordance.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :book
+    = f.select(:book_id, Book.all.collect {|p| [p.name, p.id]}, {include_blank: true})
+  .actions
+    = f.submit 'Save'

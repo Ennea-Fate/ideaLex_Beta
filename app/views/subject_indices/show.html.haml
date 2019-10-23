@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Book:
+  = @subject_index.book
+
+= link_to 'Edit', edit_subject_index_path(@subject_index)
+\|
+= link_to 'Back', subject_indices_path

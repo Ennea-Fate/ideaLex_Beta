@@ -1,0 +1,2 @@
+module SubjIndWordsHelper
+end
