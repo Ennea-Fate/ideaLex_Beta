@@ -24,7 +24,16 @@ class ConcordancesController < ApplicationController
   # POST /concordances
   # POST /concordances.json
   def create
+    log = Logger.new('log/new.log')
     @concordance = Concordance.new(concordance_params)
+    tmp = params[:concordance][:file]
+
+    tmp.each do |file|
+      word = file.original_filename
+      content = file.tempfile.read.force_encoding("windows-1251").encode("utf-8")
+      log.debug("#{content.encoding}")
+      cw = @concordance.conc_words.build(word: word.split(".")[0], content: content)
+    end
 
     respond_to do |format|
       if @concordance.save
@@ -69,6 +78,6 @@ class ConcordancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def concordance_params
-      params.require(:concordance).permit(:book_id)
+      params.require(:concordance).permit(:book_id, :file)
     end
 end

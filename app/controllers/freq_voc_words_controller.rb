@@ -1,10 +1,12 @@
 class FreqVocWordsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_freq_voc_word, only: [:show, :edit, :update, :destroy]
 
   # GET /freq_voc_words
   # GET /freq_voc_words.json
   def index
-    @freq_voc_words = FreqVocWord.all
+    @pagy, @freq_voc_words = pagy(FreqVocWord.all)
   end
 
   # GET /freq_voc_words/1

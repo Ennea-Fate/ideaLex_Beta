@@ -1,0 +1,24 @@
+= bootstrap_form_for @unanimou do |f|
+  - if @unanimou.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@unanimou.errors.count, "error")} prohibited this unanimou from being saved:"
+      %ul
+        - @unanimou.errors.full_messages.each do |message|
+          %li= message
+
+  .field.text-white
+    = f.text_field :word, hide_label: true, placeholder: "Слово"
+  .field
+    = f.text_field :pos, hide_label: true, placeholder: "Часть речи"
+  .field
+    = f.text_area :chars, hide_label: true, placeholder: "Грамматические характеристики"
+  .field
+    = f.text_area :desc, hide_label: true, placeholder: "Описание"
+  .field{:hidden => "true"}
+    = f.check_box :approves,{:checked => "checked"}
+  .field
+    = f.select(:author_id, Author.all.collect {|p| [p.f_name + " " + p.s_name, p.id]}, {hide_label: true}, {include_blank: true})
+  .field
+    = f.select(:user_id, User.all.collect {|p| [p.f_name + " " + p.s_name , p.id]}, {hide_label: true}, {include_blank: true})
+  .actions
+    = f.submit 'Сохранить', {:class => "btn btn-success"}

@@ -1,25 +1,55 @@
-%h1 Listing freq_voc_words
-
-%table
-  %thead
-    %tr
-      %th Word
-      %th Occurrence rate
-      %th Frequency vocabulary
-      %th
-      %th
-      %th
-
-  %tbody
-    - @freq_voc_words.each do |freq_voc_word|
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+  .col-lg-100.align-self-end
+    %h1.text-uppercase.text-white.font-weight-bold Частотный словник
+    %hr.divider.my-4/
+  %div.mb-2    
+    = form_tag search_engine_freqvoc_path, method: :get, role: 'search', class: "form-inline my-2 my-lg-0" do
+      = text_field_tag(:search, params[:search], {:class=> "form-control mr-sm-2", :type => "search", :placeholder => "Поиск", :"aria-label" => "Поиск"})
+      = submit_tag("Искать по частотному словнику", {:class => "btn btn-success my-2 my-sm-0"})
+    
+  %table.table.text-white
+    %thead.thead-light
       %tr
-        %td= freq_voc_word.word
-        %td= freq_voc_word.occurrence_rate
-        %td= freq_voc_word.frequency_vocabulary
-        %td= link_to 'Show', freq_voc_word
-        %td= link_to 'Edit', edit_freq_voc_word_path(freq_voc_word)
-        %td= link_to 'Destroy', freq_voc_word, method: :delete, data: { confirm: 'Are you sure?' }
+        -# %th{:scope => "col"} #
+        %th{:scope => "col"} Слово
+        %th{:scope => "col"}
+        %th{:scope => "col"} Колличество вхождений слова
+        %th{:scope => "col"} Произведение
+        %th{:scope => "col"}
+        -# %th{:scope => "col"} Произведение
+    %tbody
+      - @freq_voc_words.each do |freq_voc_word|
+        %tr
+          -# %th{:scope => "row"} 1
+          %td= freq_voc_word.word
+          %td
+          %td= freq_voc_word.occurrence_rate
+          %td= freq_voc_word.frequency_vocabulary.book.name
+          %td= link_to "Просмотр", freq_voc_word, class: "btn btn-light"
+          -# %td= freq_voc_word.frequency_vocabulary.book.name
+                
+  = raw pagy_bootstrap_nav(@pagy)
 
-%br
 
-= link_to 'New Freq voc word', new_freq_voc_word_path
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Word
+-#       %th Occurrence rate
+-#       %th Frequency vocabulary
+-#       %th
+-#       %th
+-#       %th
+
+-#   %tbody
+-#     - @freq_voc_words.each do |freq_voc_word|
+-#       %tr
+-#         %td= freq_voc_word.word
+-#         %td= freq_voc_word.occurrence_rate
+-#         %td= freq_voc_word.frequency_vocabulary.book.name
+-#         %td= link_to 'Show', freq_voc_word
+-#         %td= link_to 'Edit', edit_freq_voc_word_path(freq_voc_word)
+-#         %td= link_to 'Destroy', freq_voc_word, method: :delete, data: { confirm: 'Are you sure?' }
+
+-# = link_to 'New Freq voc word', new_freq_voc_word_path

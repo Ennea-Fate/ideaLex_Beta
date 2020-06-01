@@ -1,0 +1,48 @@
+.container
+  .row.justify-content-center
+    .col-xs-12.col-sm-12.col-md-12.col-lg-10.col-xl-10.align-items-center.text-center
+      .col-lg-100.align-self-end
+        %h1.text-uppercase.text-white.font-weight-bold Блокноты 
+        %hr.divider.my-4/
+        = link_to("Новый", {controller: "notes", action: "new"}, {class: "btn btn-success mb-2 "})
+  - @notes.each do |note|
+    .container.mb-2
+      .row.justify-content-center
+        .col-xs-12.col-sm-12.col-md-12.col-lg-10.col-xl-10
+          .card
+            .card-header
+              = note.desc
+              .btn.btn-light.btn-md= link_to 'Просмотреть', note
+            .card-body
+              %p.card-text
+                = note.text.truncate(200)
+
+
+
+-# %h1 Listing notes
+
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Desc
+-#       %th Text
+-#       %th Group
+-#       %th User
+-#       %th
+-#       %th
+-#       %th
+
+-#   %tbody
+-#     - @notes.each do |note|
+-#       %tr
+-#         %td= note.desc
+-#         %td= note.text
+-#         %td= note.group
+-#         %td= note.user.f_name + " " + note.user.s_name
+-#         %td= link_to 'Show', note
+-#         %td= link_to 'Edit', edit_note_path(note)
+-#         %td= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }
+
+-# %br
+
+-# = link_to 'New Note', new_note_path

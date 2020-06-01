@@ -1,11 +1,18 @@
 !!!
 %html
-  %head
+  %head  
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title IdeaLexBeta
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  
   %body
-    = yield
+    = render "layouts/navbar"
+    %header.masthead
+      = yield
+
+  -# %footer.bg-light.py-5
+  -#   .container
+  -#     .small.text-center.text-muted Copyright © 2019 - ideaLex

@@ -1,0 +1,30 @@
+.container
+  .row.justify-content-center
+    .col-xs-12.col-sm-12.col-md-12.col-lg-10.col-xl-10.align-items-center.text-center
+      .col-lg-100.align-self-end
+        %h1.text-uppercase.text-white.font-weight-bold Правки
+        %hr.divider.my-4/
+        -# = link_to("Новая заметка", {controller: "notes", action: "new"}, {class: "btn btn-success mb-2 "})
+  - @edits.each do |edit|
+    .container.mb-2
+      .row.justify-content-center
+        .col-xs-12.col-sm-12.col-md-12.col-lg-10.col-xl-10
+          .card
+            .card-header
+              .col-xs-12.col-sm-12.col-md-12.col-lg-10.col-xl-10
+                %b= edit.unanimou.word
+              .col-xs-12.col-sm-12.col-md-12.col-lg-10.col-xl-10
+                = "Автор " + edit.unanimou.author.f_name + " " + edit.unanimou.author.s_name
+              .col
+                = link_to 'Просмотреть', edit, {:class => "btn btn-white btn-outline-primary"}
+            .card-body
+              %p.card-text
+                = edit.edit.truncate(200)
+
+
+        -# %td= link_to 'Edit', edit_edit_path(edit)
+        -# %td= link_to 'Destroy', edit, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Edit', new_edit_path

@@ -11,10 +11,11 @@
   %tbody
     - @frequency_vocabularies.each do |frequency_vocabulary|
       %tr
-        %td= frequency_vocabulary.book
+        %td= frequency_vocabulary.book.name
         %td= link_to 'Show', frequency_vocabulary
         %td= link_to 'Edit', edit_frequency_vocabulary_path(frequency_vocabulary)
         %td= link_to 'Destroy', frequency_vocabulary, method: :delete, data: { confirm: 'Are you sure?' }
+
 
 %br
 

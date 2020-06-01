@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: 
+  chars: 
+  entries: 
+  gramm_dict_words: one
+
+two:
+  word: 
+  chars: 
+  entries: 
+  gramm_dict_words: two

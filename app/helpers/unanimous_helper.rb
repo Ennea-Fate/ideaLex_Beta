@@ -1,0 +1,2 @@
+module UnanimousHelper
+end

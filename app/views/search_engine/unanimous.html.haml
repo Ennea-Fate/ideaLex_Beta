@@ -1,0 +1,23 @@
+.container
+    .col-xl-10.col-lg-10.col-md-12.col-sm-12.col-12
+        %div.mb-2
+            = form_tag search_engine_unanimous_path, method: :get, role: 'search', class: "form-inline my-2 my-lg-0" do
+                = text_field_tag(:search, params[:search], {:class=> "form-control mr-sm-2", :type => "search", :placeholder => "Поиск", :"aria-label" => "Поиск"})
+                = submit_tag("Искать по этноидиоглоссам", {:class => "btn btn-success my-2 my-sm-0"})
+                = link_to("Назад", unanimous_path, {:class => "btn btn-primary ml-2"})
+        %h1.display-3
+            Результаты поиска по запросу
+            %em= params[:search]
+        #accordion
+            = @search_results.each_with_index  do |result, index|
+                .card
+                    .card-header{:id => ("heading-" + index.to_s)}
+                        %h5.mb-0
+                            %button.btn.btn-lin.btn-lg.btn-block{:"data-toggle" => "collapse", :"data-target" => ("#collapse-" + index.to_s), :"aria-expanded" => "false", :"aria-controls" => ("collapse-" + index.to_s)} 
+                                = result.word
+                    %div{:id => ("collapse-" + index.to_s), :class => "collapse", :"aria-labelledby" => ("heading-" + index.to_s), :"data-parent" => "#accordion"}
+                        .card-body
+                            = result.desc
+                            %br
+                            %hr
+                            = link_to("Подробнее", result, {:class => "btn btn-success mt-3"})

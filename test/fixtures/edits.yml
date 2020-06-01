@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  edit: MyText
+  unanimou: one
+  user: one
+
+two:
+  edit: MyText
+  unanimou: two
+  user: two

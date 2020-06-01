@@ -9,5 +9,8 @@
   .field
     = f.label :book
     = f.select(:book_id, Book.all.collect {|p| [p.name, p.id]}, {include_blank: true})
+  .field
+    = f.label :book
+    = f.file_field :file, multiple: true
   .actions
     = f.submit 'Save'

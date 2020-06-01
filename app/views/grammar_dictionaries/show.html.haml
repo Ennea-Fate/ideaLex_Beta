@@ -1,9 +1,29 @@
-%p#notice= notice
+.container
+  .row.h-100
+    .col-lg-100.align-self-end
+      %h1.text-uppercase.text-white.font-weight-bold Грамматический указатель для книги "#{@grammar_dictionary.book.name}"
+      %hr.divider.my-4/
 
-%p
-  %b Book:
-  = @grammar_dictionary.book
-
-= link_to 'Edit', edit_grammar_dictionary_path(@grammar_dictionary)
-\|
-= link_to 'Back', grammar_dictionaries_path
+    %table.table.text-white
+      %thead.thead-light
+        %tr.pb-5
+          -# %th{:scope => "col"} #
+          %th{:scope => "col"} Слово
+          %th{:scope => "col"} Характеристики
+          %th{:scope => "col"} Количество вхождений словоформы
+          %th{:scope => "col"} Сумма выхождений всех форм
+      %tbody
+        - @gdw.each do |gdw|
+          %tr
+            -# %th{:scope => "row"} 1
+            %td= gdw.word
+            %td= gdw.chars
+            %td= gdw.entries
+            %td= gdw.sum_entries
+          - gdw.gramm_dict_word_forms.each do |gdwf|
+            %tr
+              %td= gdwf.word
+              %td= gdwf.chars
+              %td= gdwf.entries
+              %td
+  = raw pagy_bootstrap_nav(@pagy)

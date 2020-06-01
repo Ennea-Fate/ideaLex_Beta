@@ -1,0 +1,41 @@
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-lg-100.align-self-end
+      %h1.text-uppercase.text-white.font-weight-bold= "Блокнот " + @note.desc.to_s   
+      %hr.divider.my-4/
+    -# %p#notice= notice
+  = link_to 'Назад', notes_path, class: "btn btn-light"
+  %p
+  .container.mb-2
+    .row
+      .col-xs-12.col-sm-12.col-md-12.col-lg-10.col-xl-10
+        .card
+          .card-header
+            = link_to "Изменить", edit_note_path(@note), class: "btn btn-light"
+            = link_to "Изменить", edit_note_path(@note), class: "btn btn-warning"
+          .card-body
+            %p.card-text
+              = @note.text
+
+
+
+
+
+
+
+-# %p
+-#   %b Desc:
+-#   = @note.desc
+-# %p
+-#   %b Text:
+-#   = @note.text
+-# %p
+-#   %b Group:
+-#   = @note.group
+-# %p
+-#   %b User:
+-#   = @note.user
+
+-# = link_to 'Edit', edit_note_path(@note)
+-# \|
+-# = link_to 'Back', notes_path

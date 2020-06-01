@@ -1,15 +1,28 @@
-%p#notice= notice
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-lg-100.align-self-end
+      %h1.text-uppercase.text-white.font-weight-bold Частота вхождения слова
+      %h2.text-uppercase.text-white.font-weight-bold= @freq_voc_word.word
+      -# %p#notice= notice
+      %hr.divider.my-4/
+      %p.text-white.font-weight-bold= "Произведение: " + @freq_voc_word.frequency_vocabulary.book.name
+      %p.text-white.font-weight-bold= "Количесто вхождений : " + @freq_voc_word.occurrence_rate.to_s
+      %hr/
+  .btn.btn-light.btn-xs.my-2.my-sm-0 
+    = link_to 'Назад', freq_voc_words_path
 
-%p
-  %b Word:
-  = @freq_voc_word.word
-%p
-  %b Occurrence rate:
-  = @freq_voc_word.occurrence_rate
-%p
-  %b Frequency vocabulary:
-  = @freq_voc_word.frequency_vocabulary
+  -#= raw pagy_bootstrap_nav(@pagy)
 
-= link_to 'Edit', edit_freq_voc_word_path(@freq_voc_word)
-\|
-= link_to 'Back', freq_voc_words_path
+-# = link_to 'Edit', edit_freq_voc_word_path(@freq_voc_word)
+-# \|
+-# = link_to 'Back', freq_voc_words_path
+
+-# %p
+-#   %b Word:
+-#   = @freq_voc_word.word
+-# %p
+-#   %b Occurrence rate:
+-#   = @freq_voc_word.occurrence_rate
+-# %p
+-#   %b Frequency vocabulary:
+-#   = @freq_voc_word.frequency_vocabulary

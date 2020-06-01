@@ -1,0 +1,34 @@
+%nav.navbar.navbar-expand.navbar-light.bg-light
+    %a.navbar-brand{:href => root_path} ideaLex
+    .collapse.navbar-collapse#navbarSupportedContent
+        %ul.navbar-nav.mr-auto
+            %li.nav-item.active
+                %a.nav-link{:href => books_path} Книги
+            %li.nav-item
+                %a.nav-link{:href => unanimous_path} Этноидиоглоссы
+            %li.nav-item.dropdown
+                %a.nav-link.dropdown-toggle{:href => "#", :role => "button", :"data-toggle" => "dropdown", :"aria-haspopup" => "true", :"aria-expanded" => "false"} Ещё
+                .dropdown-menu{:"aria-labelledby" => "navbarDropdown"}
+                    %a.dropdown-item{:href => conc_words_path} Конкордансы
+                    .dropdown-divider
+                    %a.dropdown-item{:href => freq_voc_words_path} Частотный словник
+                    .dropdown-divider
+                    %a.dropdown-item{:href => gramm_dict_words_path} Грамматический словарь
+        = form_tag search_engine_index_path, method: :get, role: "search", class: "form-inline my-2 my-lg-0 " do
+            = text_field_tag(:search, params[:search], {:class=> "form-control mr-sm-2", :type => "search", :placeholder => "Поиск", :"aria-label" => "Поиск"})
+            = submit_tag("Искать", {:class => "btn btn-outline-success my-2 my-sm-0"})
+            //%button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Найти
+        %ul.navbar-nav
+            %li.nav-item
+                %a.nav-link{:href => notes_path} Блокнот
+    - if current_user
+        .btn-group
+            %a.btn.btn-primary{:href => "#", :type => "button", :role => "button"} 
+                = current_user.f_name + " " + current_user.s_name
+            = link_to logout_path, class: "btn btn-primary" do
+                %i.fa.fa-sign-out.fa-lg
+    - else
+        .btn-group
+            %a.btn{:href => login_path, :type => "button", :role => "button"} Войти
+            %a.btn{:href => signup_path, :type => "button"} Регистрация
+

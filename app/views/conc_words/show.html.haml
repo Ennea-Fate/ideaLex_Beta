@@ -1,18 +1,27 @@
-%p#notice= notice
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-lg-100.align-self-end
+      %h1.text-uppercase.text-white.font-weight-bold Конкорданс
+      %hr.divider.my-4/
+    -# %p#notice= notice
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-lg-100.align-self-end
+      %p
+        %b.text-white.font-weight-bold Слово:  
+      %h1.text-uppercase.text-white.font-weight-bold
+        = @conc_word.word
+  %hr.divider.my-4/
+  .btn.btn-light.btn-md 
+    = link_to 'Назад', conc_words_path
+  %p
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+      .card
+        .card-body
+          %p.card-text
+            = @conc_word.content.truncate(15000, separator: '.', omission: '.')
+  .row.align-items-center.justify-content-center.text-center
+    .col-xl-6.col-lg-8.col-md-8.col-sm-12.col-12
+      .mt-2
 
-%p
-  %b Word:
-  = @conc_word.word
-%p
-  %b Concordance:
-  = @conc_word.concordance
-%p
-  %b Pages:
-  = @conc_word.pages
-%p
-  %b Concordance:
-  = @conc_word.concordance
 
-= link_to 'Edit', edit_conc_word_path(@conc_word)
-\|
-= link_to 'Back', conc_words_path

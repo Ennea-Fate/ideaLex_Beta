@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyString
+  pos: MyString
+  chars: MyText
+  desc: MyText
+  approves: false
+  author: one
+  user: one
+
+two:
+  word: MyString
+  pos: MyString
+  chars: MyText
+  desc: MyText
+  approves: false
+  author: two
+  user: two

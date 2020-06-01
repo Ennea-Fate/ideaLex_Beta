@@ -1,0 +1,20 @@
+= bootstrap_form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.text_field :email, hide_label: true, placeholder: "Электронная почта"
+  .field
+    = f.password_field :password, hide_label: true, placeholder: "Пароль"
+  .field
+    = f.text_field :f_name, hide_label: true, placeholder: "Имя"
+  .field
+    = f.text_field :s_name, hide_label: true, placeholder: "Фамилия"
+  .field{placeholder: "Фамилия"}
+    = f.select(:role_id, Role.all.collect {|p| [p.name, p.id]}, {include_blank: false, hide_label: true, readonly: "readonly"}, hidden: "true", value: 2)
+  .actions
+    = f.submit 'Зарегистрироваться', class: "btn btn-success"

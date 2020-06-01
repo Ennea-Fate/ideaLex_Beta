@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ideaLex_Beta_production
-  username: ideaLex_Beta
-  password: <%= ENV['IDEALEX_BETA_DATABASE_PASSWORD'] %>
+  username: ennea
+  password: nmsh99k2go11

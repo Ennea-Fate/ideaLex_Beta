@@ -1,27 +1,76 @@
-%h1 Listing books
-%h1 POOK
-%table
-  %thead
-    %tr
-      %th ID
-      %th Text
-      %th Name
-      %th Publ date
-      %th
-      %th
-      %th
+.container
+  .row.h-100
+    .col-lg-100.align-self-end
+      %h1.text-uppercase.text-white.font-weight-bold Список книг
+      %hr.divider.my-4/
+      
+  
+    -# %a.nav-link.btn.btn-light.btn-xl{:href => books_path} Книги
+    -#   - @books.each do |book|
+    -#     = link_to "Back", freq_voc_words.book.frequency_vocabulary
+    -# frequency_vocabulary_path(#{@school.id})} Частотник
+    -# %a.btn.btn-dark.btn-xl{:href => show_frequency_vocabulary_path(book.frequency_vocabulary)} Частотник
+    -# = link_to "Back", book.frequency_vocabulary
+    -#   %a.btn.btn-dark.btn-xl{:href => frequency_vocabulary_path(#{@school.id})} Частотник
 
-  %tbody
-    - @books.each do |book|
-      %tr
-        %td= book.id
-        %td= book.text
-        %td= book.name
-        %td= book.publ_date
-        %td= link_to 'Show', book
-        %td= link_to 'Edit', edit_book_path(book)
-        %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
+    -# = link_to "Back", frequency_vocabulary
+    -# = link_to "Profile", controller: "frequency_vocabularies", action: "show", id: book.id
 
-%br
+  %table.table.text-white
+    %thead.thead-light
+      %tr.pb-5
+        %th{:scope => "col"} Название
+        %th{:scope => "col"} Дата публикации
+        %th{:scope => "col"}
+        %th{:scope => "col"}
+        %th{:scope => "col"}
+    %tbody
+      - @books.each do |book|
+        %tr
+          %td= book.name
+          %td= book.publ_date
+          %td= link_to "Просмотр", book, class: "btn btn-light"
+          %td= link_to "Частотник", book.frequency_vocabulary, class: "btn btn-light"
+          %td= link_to "Грамматический словарь", book.grammar_dictionary, class: "btn btn-light"
 
-= link_to 'New Book', new_book_path
+
+-# .btn-toolbar{"aria-label" => "Toolbar with button groups", :role => "toolbar"}
+-#               .btn-group.mr-2{"aria-label" => "First group", :role => "group"}
+-#                 .btn.btn-light.btn-xl 
+-#                   = link_to "Частотник", book.frequency_vocabulary
+-#                 -# /frequency_vocabulary/frequency_vocabulary/\#{book.frequency_vocabulary}
+-#               .btn-group.mr-2{"aria-label" => "Second group", :role => "group"}
+-#                 .btn.btn-light.btn-xl 
+-#                   = link_to "Грамматический словарь", book.grammar_dictionary
+
+-# %h1 Listing books
+
+-# %table
+-#   %thead
+-#     %tr
+-#       %th ID
+-#       %th Text
+-#       %th Name
+-#       %th Publ date
+-#       %th
+-#       %th
+-#       %th
+
+-#   %tbody
+-#     - @books.each do |book|
+-#       %tr
+-#         %td= book.id
+-#         - if book.text != nil
+-#           %td= book.text.truncate(25, omission: '...')
+-#         - else
+-#           %td= book.text
+-#         %td= book.name
+-#         %td= book.publ_date
+-#         %td= link_to 'Show', book
+-#         %td= link_to 'Edit', edit_book_path(book)
+-#         %td= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }
+
+-# %br
+
+-# = link_to 'New Book', new_book_path
+  

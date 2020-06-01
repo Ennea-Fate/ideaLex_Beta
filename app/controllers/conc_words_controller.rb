@@ -1,11 +1,17 @@
 class ConcWordsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_conc_word, only: [:show, :edit, :update, :destroy]
 
   # GET /conc_words
   # GET /conc_words.json
   def index
-    @conc_words = ConcWord.all
+    @pagy, @conc_words = pagy(ConcWord.all)
   end
+
+def trancate(string)
+  string.size > 5 ? [string[0,5],string[-5,5]].join("...") : string
+end
 
   # GET /conc_words/1
   # GET /conc_words/1.json
@@ -69,6 +75,6 @@ class ConcWordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def conc_word_params
-      params.require(:conc_word).permit(:word, :concordance, :pages, :concordance_id)
+      params.require(:conc_word).permit(:word, :content, :pages, :concordance_id)
     end
 end

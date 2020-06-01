@@ -1,10 +1,12 @@
 class GrammDictWordsController < ApplicationController
+  include Pagy::Backend
+  
   before_action :set_gramm_dict_word, only: [:show, :edit, :update, :destroy]
 
   # GET /gramm_dict_words
   # GET /gramm_dict_words.json
   def index
-    @gramm_dict_words = GrammDictWord.all
+    @pagy, @gramm_dict_words = pagy(GrammDictWord.all)
   end
 
   # GET /gramm_dict_words/1

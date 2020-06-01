@@ -1,0 +1,75 @@
+.container
+  .row.h-100.align-items-center
+    .col-xs-6.col-sm-6.col-md-6.col-lg-5.col-xl-5
+      %h1.text-white.font-weight-bold= @unanimou.word
+    .col-xs-6.col-sm-6.col-md-6.col-lg-5.col-xl-5
+      %p 
+        .text-white= @unanimou.author.s_name + " " + @unanimou.author.f_name + " " + @unanimou.author.l_name
+    -# %p#notice= notice
+  %hr.my-4/
+  
+  .row.align-items-center
+    .col-lg-3
+      %p.text-white.font-weight-bold= "Часть речи:" + " " + @unanimou.pos
+    .col-lg-3
+      %p.text-white.font-weight-bold= @unanimou.chars
+  %hr.my-4/
+  
+  .row 
+    .col-lg-12
+      .card
+        .card-header
+          %p.text-black Описание
+        .card-body
+          .card-text
+            %p.text-black= @unanimou.desc
+
+
+
+  %hr.my-4/
+  .btn.btn-light.btn-md.ml-2 
+    = link_to 'Назад', unanimous_path
+
+
+  .btn.btn-light.btn-md.ml-2 
+    = link_to 'Изменить', edit_unanimou_path(@unanimou)
+  
+  .btn.btn-light.btn-md.ml-2 
+    = link_to('Добавить правки', {controller: "edits", action: "new", unanimou_id: @unanimou.id}, nil)
+
+.container.mt-3
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12.col-xl-12
+    .row
+      - @unanimou.edits.reverse.each do |edit|
+        .card.mt-2
+          .card-header
+            = edit.user.f_name + " " + edit.user.s_name
+          .card-body
+            %p.card-text 
+              = edit.edit
+
+
+-# .container
+-#   .row
+-#     .col-xs-6.col-sm-6.col-md-6.col-lg-5.col-xl-5
+-#       %h1.text-white.font-weight-bold= @unanimou.word
+-#     .col-xs-6.col-sm-6.col-md-6.col-lg-5.col-xl-5
+-#       %p 
+-#         .text-white= @unanimou.author.s_name + " " + @unanimou.author.f_name + " " + @unanimou.author.l_name
+-#   .row
+-#     .col-xs-6.col-sm-6.col-md-6.col-lg-5.col-xl-5
+-#       %b
+-#         .text-white= @unanimou.pos
+-#         .text-white= @unanimou.chars
+-#   .row
+-#     -#.col-lg-100.align-self-end.align-items-center.justify-content-center.text-center
+-#     .col-xs-6.col-sm-6.col-md-6.col-lg-5.col-xl-5.justify-content-center
+-#       %p
+-#         %b
+-#           .text-white= @unanimou.desc
+
+
+-#   = link_to 'Edit', edit_unanimou_path(@unanimou)
+-#   \|
+-#   = link_to 'Back', unanimous_path
+

@@ -1,27 +1,53 @@
-%h1 Listing conc_words
-
-%table
-  %thead
-    %tr
-      %th Word
-      %th Concordance
-      %th Pages
-      %th Concordance
-      %th
-      %th
-      %th
-
-  %tbody
-    - @conc_words.each do |conc_word|
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+  .col-lg-100.align-self-end
+    %h1.text-uppercase.text-white.font-weight-bold Конкордансы
+    %hr.divider.my-4/
+  %div.mb-2
+    = form_tag search_engine_concordance_path, method: :get, role: 'search', class: "form-inline my-2 my-lg-0" do
+      = text_field_tag(:search, params[:search], {:class=> "form-control mr-sm-2", :type => "search", :placeholder => "Поиск", :"aria-label" => "Поиск"})
+      = submit_tag("Искать по конкордансу", {:class => "btn btn-success my-2 my-sm-0"})
+  %table.table.text-white
+    %thead.thead-light
       %tr
-        %td= conc_word.word
-        %td= conc_word.concordance
-        %td= conc_word.pages
-        %td= conc_word.concordance
-        %td= link_to 'Show', conc_word
-        %td= link_to 'Edit', edit_conc_word_path(conc_word)
-        %td= link_to 'Destroy', conc_word, method: :delete, data: { confirm: 'Are you sure?' }
+        -# %th{:scope => "col"} #
+        %th{:scope => "col"} Слово
+        %th{:scope => "col"} Произведение
+        %th{:scope => "col"} 
+        -# %th{:scope => "col"} Произведение
+    %tbody
+      - @conc_words.each do |conc_word|
+        %tr
+          -# %th{:scope => "row"} 1
+          %td= conc_word.word
+          %td= conc_word.concordance.book.name
+          %td
+            = link_to 'Просмотреть', conc_word, class: "btn btn-light"
+          -# %td= freq_voc_word.frequency_vocabulary.book.name
 
-%br
+  -# %table
+  -#   %thead
+  -#     %tr
+  -#       %th Word
+  -#       %th Content
+  -#       %th Pages
+  -#       %th Concordance
+  -#       %th
+  -#       %th
+  -#       %th
 
-= link_to 'New Conc word', new_conc_word_path
+  -#   %tbody
+  -#     - @conc_words.each do |conc_word|
+  -#       %tr
+  -#         %td= conc_word.word
+  -#         %td= conc_word.content.truncate(80)
+  -#         %td= conc_word.pages
+  -#         %td= conc_word.concordance
+  -#         %td= link_to 'Show', conc_word
+  -#         %td= link_to 'Edit', edit_conc_word_path(conc_word)
+  -#         %td= link_to 'Destroy', conc_word, method: :delete, data: { confirm: 'Are you sure?' }
+
+  -# %br
+
+  -# = link_to 'New Conc word', new_conc_word_path
+  = raw pagy_bootstrap_nav(@pagy)

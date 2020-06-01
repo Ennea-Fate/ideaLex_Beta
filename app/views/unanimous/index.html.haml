@@ -1,0 +1,36 @@
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+  .col-lg-100.align-self-end
+    %h1.text-uppercase.text-white.font-weight-bold Список этноидиоглосс
+    %hr.divider.my-4/
+
+  %div.mb-2
+    = form_tag search_engine_unanimous_path, method: :get, role: 'search', class: "form-inline my-2 my-lg-0" do
+      = text_field_tag(:search, params[:search], {:class=> "form-control mr-sm-2", :type => "search", :placeholder => "Поиск", :"aria-label" => "Поиск"})
+      = submit_tag("Искать по этноидиоглоссам", {:class => "btn btn-success my-2 my-sm-0"})
+
+  %table.table.text-white
+    %thead.thead-light
+      %tr
+        %th{:scope => "col"} Этноидиоглосс
+        %th{:scope => "col"} Автор
+        %th{:scope => "col"} Эксперт
+        %th
+        %th
+        %th
+    - @unanimous.each do |unanimou|
+      %tr
+        %td= unanimou.word
+        -# %td= unanimou.pos
+        -# %td= unanimou.chars
+        -# %td= unanimou.desc
+        -# %td= unanimou.approves
+        %td= unanimou.author.f_name + " " + unanimou.author.s_name
+        %td= unanimou.user.f_name + " " + unanimou.user.s_name
+        %td= link_to 'Просмотр', unanimou, class: "btn btn-light"
+        %td= link_to 'Редактировать', edit_unanimou_path(unanimou), class: "btn btn-info"
+        %td= link_to 'Удалить', unanimou, method: :delete, data: { confirm: 'Подтвердить удаление?!' }, class: "btn btn-danger"
+  %br
+  = link_to 'Добавить новый', new_unanimou_path, class: "btn btn-primary"
+
+

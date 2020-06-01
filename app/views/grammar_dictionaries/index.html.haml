@@ -9,9 +9,9 @@
       %th
 
   %tbody
-    - @grammar_dictionaries.each do |grammar_dictionary|
+    - @freq_voc_words.each do |grammar_dictionary|
       %tr
-        %td= grammar_dictionary.book
+        %td= grammar_dictionary.book.name
         %td= link_to 'Show', grammar_dictionary
         %td= link_to 'Edit', edit_grammar_dictionary_path(grammar_dictionary)
         %td= link_to 'Destroy', grammar_dictionary, method: :delete, data: { confirm: 'Are you sure?' }

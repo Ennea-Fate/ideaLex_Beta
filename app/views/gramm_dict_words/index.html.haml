@@ -1,25 +1,56 @@
-%h1 Listing gramm_dict_words
-
-%table
-  %thead
-    %tr
-      %th Word
-      %th Chars
-      %th Grammar dictionary
-      %th
-      %th
-      %th
-
-  %tbody
-    - @gramm_dict_words.each do |gramm_dict_word|
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+  .col-lg-100.align-self-end
+    %h1.text-uppercase.text-white.font-weight-bold Грамматический словарь
+    %hr.divider.my-4/
+  %div.mb-2
+    = form_tag search_engine_grammdict_path, method: :get, role: 'search', class: "form-inline my-2 my-lg-0" do
+      = text_field_tag(:search, params[:search], {:class=> "form-control mr-sm-2", :type => "search", :placeholder => "Поиск", :"aria-label" => "Поиск"})
+      = submit_tag("Искать по грамматическому словарю", {:class => "btn btn-success my-2 my-sm-0"})
+  
+  %table.table.text-white
+    %thead.thead-light
       %tr
-        %td= gramm_dict_word.word
-        %td= gramm_dict_word.chars
-        %td= gramm_dict_word.grammar_dictionary
-        %td= link_to 'Show', gramm_dict_word
-        %td= link_to 'Edit', edit_gramm_dict_word_path(gramm_dict_word)
-        %td= link_to 'Destroy', gramm_dict_word, method: :delete, data: { confirm: 'Are you sure?' }
+        -# %th{:scope => "col"} #
+        %th{:scope => "col"} Слово
+        %th{:scope => "col"} 
+        %th{:scope => "col"} Грамматические характеристики
+        %th{:scope => "col"} Произведение
+        %th{:scope => "col"}
+        -# %th{:scope => "col"} Произведение
+    %tbody
+      - @gramm_dict_words.each do |gramm_dict_word|
+        %tr
+          -# %th{:scope => "row"} 1
+          %td= gramm_dict_word.word
+          %td
+          %td= gramm_dict_word.chars
+          %td= gramm_dict_word.grammar_dictionary.book.name
+          %td= link_to "Просмотр", gramm_dict_word, class: "btn btn-light"
+          -# %td= freq_voc_word.frequency_vocabulary.book.name
+  
+  = raw pagy_bootstrap_nav(@pagy)
 
-%br
+  -# = link_to 'New Gramm dict word', new_gramm_dict_word_path
+  -# %table
+  -#   %thead
+  -#     %tr
+  -#       %th Word
+  -#       %th Chars
+  -#       %th Grammar dictionary
+  -#       %th
+  -#       %th
+  -#       %th
 
-= link_to 'New Gramm dict word', new_gramm_dict_word_path
+  -#   %tbody
+  -#     - @gramm_dict_words.each do |gramm_dict_word|
+  -#       %tr
+  -#         %td= gramm_dict_word.word
+  -#         %td= gramm_dict_word.chars
+  -#         %td= gramm_dict_word.grammar_dictionary
+  -#         %td= link_to 'Show', gramm_dict_word
+  -#         %td= link_to 'Edit', edit_gramm_dict_word_path(gramm_dict_word)
+  -#         %td= link_to 'Destroy', gramm_dict_word, method: :delete, data: { confirm: 'Are you sure?' }
+
+  -# %br
+

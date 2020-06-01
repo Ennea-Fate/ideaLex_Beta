@@ -1,0 +1,15 @@
+-# %p#notice= notice
+
+%p
+  %b Edit:
+  = @edit.edit
+%p
+  %b Unanimou:
+  = @edit.unanimou
+%p
+  %b User:
+  = @edit.user
+
+= link_to 'Edit', edit_edit_path(@edit)
+\|
+= link_to 'Back', edits_path

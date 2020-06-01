@@ -1,15 +1,14 @@
-%p#notice= notice
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-lg-100.align-self-end
+      %h1.text-uppercase.text-white.font-weight-bold Грамматический словарь слова:
+      %h2.em.text-white.font-weight-bold= @gramm_dict_word.word
+      -# %p#notice= notice
+      %hr.divider.my-4/
+      %p.text-white.font-weight-bold= "Произведение: " + @gramm_dict_word.grammar_dictionary.book.name
+      %p.text-white.font-weight-bold= "Характеристика : " + @gramm_dict_word.chars.to_s
+      %hr/
+  = link_to 'Назад', gramm_dict_words_path, class: "btn btn-light"
 
-%p
-  %b Word:
-  = @gramm_dict_word.word
-%p
-  %b Chars:
-  = @gramm_dict_word.chars
-%p
-  %b Grammar dictionary:
-  = @gramm_dict_word.grammar_dictionary
+-# = link_to 'Edit', edit_gramm_dict_word_path(@gramm_dict_word)
 
-= link_to 'Edit', edit_gramm_dict_word_path(@gramm_dict_word)
-\|
-= link_to 'Back', gramm_dict_words_path

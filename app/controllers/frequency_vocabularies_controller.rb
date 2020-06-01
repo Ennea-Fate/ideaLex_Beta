@@ -10,6 +10,7 @@ class FrequencyVocabulariesController < ApplicationController
   # GET /frequency_vocabularies/1
   # GET /frequency_vocabularies/1.json
   def show
+    @pagy, @freq_voc_words = pagy(FreqVocWord.all)
   end
 
   # GET /frequency_vocabularies/new
@@ -24,8 +25,17 @@ class FrequencyVocabulariesController < ApplicationController
   # POST /frequency_vocabularies
   # POST /frequency_vocabularies.json
   def create
+    # log = Logger.new('log/my.log')
     @frequency_vocabulary = FrequencyVocabulary.new(frequency_vocabulary_params)
-
+    tmp = params[:frequency_vocabulary][:file].tempfile.read.force_encoding("windows-1251").encode("utf-8")
+    #log.debug("#{tmp.truncate(500)}")
+    array = tmp.split("\r")
+    array.each do |x|
+      tmp = x.split("\t")
+      fvw = @frequency_vocabulary.freq_voc_words.build(word: tmp[1],occurrence_rate: tmp[0])
+      # log.debug("FVW: #{fvw.inspect}")
+      #FreqVocWords.create!([{word: tmp[1]}, {occurrence_rate: tmp[0]}, {frequency_vocabulary_id: @frequency_vocabulary.id}])
+    end
     respond_to do |format|
       if @frequency_vocabulary.save
         format.html { redirect_to @frequency_vocabulary, notice: 'Frequency vocabulary was successfully created.' }
@@ -69,6 +79,6 @@ class FrequencyVocabulariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def frequency_vocabulary_params
-      params.require(:frequency_vocabulary).permit(:book_id)
+      params.require(:frequency_vocabulary).permit(:book_id, :file)
     end
 end

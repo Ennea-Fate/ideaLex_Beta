@@ -1,15 +1,24 @@
-%p#notice= notice
+.container
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-lg-100.align-self-end
+      %h1.text-uppercase.text-white.font-weight-bold= @book.name 
+      %p1.text-white.font-weight-bold= @book.publ_date
+      %hr.divider.my-4/
+  .btn.btn-light.btn-md 
+    = link_to 'Назад', books_path
+  %p
+  .row.h-100.align-items-center.justify-content-center.text-center
+    .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+      .card
+        .card-body
+          %p.card-text
+            = @pages.each do |page|
+              = @page
+  .row.align-items-center.justify-content-center.text-center
+    .col-xl-6.col-lg-8.col-md-8.col-sm-12.col-12
+      .mt-2
+        = pagy_bootstrap_nav(@pagy).html_safe
 
-%p
-  %b Text:
-  = @book.text
-%p
-  %b Name:
-  = @book.name
-%p
-  %b Publ date:
-  = @book.publ_date
 
-= link_to 'Edit', edit_book_path(@book)
-\|
-= link_to 'Back', books_path
+
+

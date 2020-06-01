@@ -1,0 +1,26 @@
+= bootstrap_form_for @note do |f|
+  = f.text_field :desc, hide_label: true, placeholder: "Описание записи"
+  = f.text_area :text, class: "txta", hide_label: true, placeholder: "Запись"
+  = f.number_field :group, hide_label: true, placeholder: "Группа записей"
+  = f.submit "Сохранить"
+
+
+-# = form_for @note do |f|
+-#   - if @note.errors.any?
+-#     #error_explanation
+-#       %h2= "#{pluralize(@note.errors.count, "error")} prohibited this note from being saved:"
+-#       %ul
+-#         - @note.errors.full_messages.each do |message|
+-#           %li= message
+-#   .form
+-#     .form-group
+-#       = f.label :desc
+-#       = text_field(:note, :desc, {class: "form-control"})
+-#     .form-group
+-#       = f.label :text
+-#       = text_field(:note, :text, {class: "form-control"})
+-#     .form-group
+-#       = f.label :group
+-#       = number_field(:note, :group, {class: "form-control"})
+
+-#     = f.submit 'Сохранить', calss: "btn btn-success"
